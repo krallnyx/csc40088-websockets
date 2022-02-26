@@ -27,7 +27,7 @@ app.debug = 'DEBUG' in os.environ
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["100 per day", "10 per hour"]
+    default_limits=["600 per day", "60 per hour"]
 )
 
 # define our message schema:
