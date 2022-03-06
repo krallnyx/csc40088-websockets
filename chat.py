@@ -21,31 +21,31 @@ app.logger.setLevel(gunicorn_logger.level)
 app.debug = 'DEBUG' in os.environ
 
 
-""" ADDIND SECURITY FEATURES"""
+""" ADDING SECURITY FEATURES"""
 # set up the limiter, set some global defaults
 # that apply to all routes
 limiter = Limiter(
     app,
     key_func=get_remote_address,
-    default_limits=["200 per day", "100 per hour"]
+    default_limits=["200 per day", "60 per hour"]
 )
 
 # define our message schema:
 message_schema = {
-    "type" : "object",
-    "properties" : {
-        "handle" : {
+    "type": "object",
+    "properties": {
+        "handle": {
             "type" : "string",
-            "minLength" : 3,
-            "maxLength" : 25,
+            "minLength": 3,
+            "maxLength": 25,
          },
-        "text" : {
-            "type" : "string",
-            "minLength" : 2,
-            "maxLength" : 140,
+        "text": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 140,
         },
     },
-    "required" : [ "handle", "text" ],
+    "required": [ "handle", "text" ],
     "additionalProperties" : False
 }
 """ END OF DECLARING SECURITY FEATURES """
