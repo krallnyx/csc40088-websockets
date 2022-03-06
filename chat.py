@@ -41,7 +41,7 @@ message_schema = {
          },
         "text" : {
             "type" : "string",
-            "minLength" : 1,
+            "minLength" : 2,
             "maxLength" : 140,
         },
     },
